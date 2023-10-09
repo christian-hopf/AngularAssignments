@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="onlyOdd = !onlyOdd">
+        Only show odd numbers
+      </button>
+      <br /><br />
+      <ul class="list-group">
+        <div *ngIf="onlyOdd">
+          <li
+            class="list-group-item"
+            *ngFor="let oddNumber of oddNumbers"
+            [ngClass]="{ odd: onlyOdd }"
+            [ngStyle]="{ backgroundColor: onlyOdd ? 'orange' : 'transparent' }"
+          >
+            {{ oddNumber }}
+          </li>
+        </div>
+        <!-- <div *ngIf="!onlyOdd">
+          <li class="list-group-item" *ngFor="let evenNumber of evenNumbers">
+            {{ evenNumber }}
+          </li>
+        </div>!-->
+      </ul>
+      <!-- <ng-template [ngIf]="!onlyOdd">
+        <div *ngIf="!onlyOdd">
+          <li class="list-group-item" *ngFor="let evenNumber of evenNumbers">
+            {{ evenNumber }}
+          </li>
+        </div>
+      </ng-template> -->
+      <div *appUnless="onlyOdd">
+        <li class="list-group-item" *ngFor="let evenNumber of evenNumbers">
+          {{ evenNumber }}
+        </li>
+      </div>
+      <ng-template [ngIf]="onlyOdd">
+        <p>Only odd</p>
+      </ng-template>
+      <p appBasicHighlight>Basic Highlight Directive Paragraph</p>
+      <p appNewHighlight [defaultColor]="'orange'" [highlightColor]="'red'">
+        New Highlight Directive Paragraph
+      </p>
+      <div [ngSwitch]="num">
+        <p *ngSwitchCase="9">Num is 9</p>
+        <p *ngSwitchCase="90">Num is 90</p>
+        <p *ngSwitchCase="900">Num is 900</p>
+        <p *ngSwitchDefault>Default case</p>
+      </div>
+    </div>
+  </div>
+</div>
