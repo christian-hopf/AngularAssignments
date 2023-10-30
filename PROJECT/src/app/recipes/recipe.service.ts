@@ -1,12 +1,10 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingService } from '../shopping-list/shopping.service';
 
 @Injectable()
 export class RecipeService {
-  recipeSelected = new EventEmitter<Recipe>();
-
   sampleRecipe: Recipe = new Recipe(
     'Pancakes',
     'A recipe for pancakes',
@@ -24,6 +22,10 @@ export class RecipeService {
   getRecipes() {
     // calling slice returns the array by value instead of by reference
     return this.recipes.slice();
+  }
+
+  getRecipeById(id: number) {
+    return this.recipes[id];
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
