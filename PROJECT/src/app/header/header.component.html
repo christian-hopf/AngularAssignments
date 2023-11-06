@@ -11,6 +11,9 @@
         <li routerLinkActive="active">
           <a routerLink="/shopping-list">Shopping List</a>
         </li>
+        <li routerLinkActive="active">
+          <a routerLink="/auth">Sign Up or Login</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown" appDropdown>
@@ -18,8 +21,14 @@
             >Manage</a
           >
           <ul class="dropdown-menu">
-            <li><a style="cursor: pointer">Save Data</a></li>
-            <li><a style="cursor: pointer">Fetch Data</a></li>
+            <li>
+              <a style="cursor: pointer" (click)="onSaveRecipes()">Save Data</a>
+            </li>
+            <li>
+              <a style="cursor: pointer" (click)="onFetchRecipes()"
+                >Fetch Data</a
+              >
+            </li>
           </ul>
         </li>
       </ul>
