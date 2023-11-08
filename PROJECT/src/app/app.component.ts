@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth/auth.service';
+// import { LoggingService } from './logging.service';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +13,13 @@ export class AppComponent implements OnInit {
   // onSectionNavigate(section: string){
   //   this.loadedSection = section;
   // }
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    // private loggingService: LoggingService
+  ) {}
 
   ngOnInit(): void {
     this.authService.autoLogin();
+    // this.loggingService.printLog('App component ngOnInit');
   }
 }

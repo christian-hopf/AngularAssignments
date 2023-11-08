@@ -42,3 +42,5 @@ testem.log
 Thumbs.db
 
 API_KEY.js
+environment.ts
+environment.prod.ts

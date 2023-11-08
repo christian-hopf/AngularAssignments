@@ -2,8 +2,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, tap } from 'rxjs/operators';
 import { BehaviorSubject, throwError } from 'rxjs';
+import { environment } from '../../environments/environment';
 
-import STORED_API_KEY from './API_KEY.js';
 import { User } from './user.model';
 import { Router } from '@angular/router';
 
@@ -25,11 +25,12 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   signUp(email: string, password: string) {
-    const API_KEY = STORED_API_KEY;
+    // const API_KEY = STORED_API_KEY;
     // console.log(API_KEY);
     return this.http
       .post<AuthResponseData>(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`,
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
+          environment.APIKey,
         {
           email: email,
           password: password,
@@ -50,10 +51,11 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    const API_KEY = STORED_API_KEY;
+    // const API_KEY = STORED_API_KEY;
     return this.http
       .post<AuthResponseData>(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`,
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' +
+          environment.APIKey,
         {
           email: email,
           password: password,
